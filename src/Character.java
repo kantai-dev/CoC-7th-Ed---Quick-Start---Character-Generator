@@ -10,8 +10,11 @@ public class Character {
 	private ArrayList<Crunch> attributes;
 	
 	private Random d6;
-	private int cLuck, cBuild, cHitPoints, cSAN;
+	private int cLuck, cBuild, cHitPoints, cSAN, cCreditRating;
 	private String cDamageBonus;
+	
+	private Occupation cOccupation;
+	private ArrayList<Crunch> skills;
 	
 	public Character() {
 		
@@ -25,6 +28,11 @@ public class Character {
 		consultDamageBonusTable();
 		cHitPoints = calculateHitPoints();
 		cSAN = POW.getValue();
+		
+		skills = new ArrayList<>();
+		chooseOccupation(4);
+		assignSkillScores();
+		choosePersonalInterestSkills();
 		
 	}
 	
@@ -111,6 +119,86 @@ public class Character {
 		return SIZ.getValue() + CON.getValue() / 10;
 	}
 	
+	private void chooseOccupation(int choice) {
+		
+		switch (choice) {
+		case 0: //Antiquarian
+			cOccupation = new Antiquarian();
+			break;
+		case 1: //Author
+			cOccupation = new Author();
+			break;
+		case 2: //Dilettante
+			cOccupation = new Dilettante();
+			break;
+		case 3: //Doctor of Medicine
+			cOccupation = new DoctorOfMedicine();
+			break;
+		case 4: //Journalist
+			cOccupation = new Journalist();
+			break;
+		case 5: //Police Detective
+			cOccupation = new PoliceDetective();
+			break;
+		case 6: //Private Investigator
+			cOccupation = new PrivateInvestigator();
+			break;
+		case 7: //Professor
+			cOccupation = new Professor();
+			break;
+		default:
+			break;
+		}
+		
+		skills = cOccupation.getSkills();
+		
+	}
+	
+	private void assignSkillScores() {
+		
+		//40, 40, 40, 50, 50, 50, 60, 60, 70
+		
+		//8 skills and credit rating
+		
+		skills.get(0).assignValue(40, true);
+		skills.get(1).assignValue(40, true);
+		skills.get(2).assignValue(40, true);
+		skills.get(3).assignValue(50, true);
+		skills.get(4).assignValue(50, true);
+		skills.get(5).assignValue(50, true);
+		skills.get(6).assignValue(60, true);
+		skills.get(7).assignValue(60, true);
+		
+		cCreditRating = 70;
+		
+	}
+	
+	private void choosePersonalInterestSkills() {
+		
+		ArrayList<Crunch> tmp = new Skills(skills).getAllSkills();
+		
+//		for (int i = 0; i < tmp.size(); i++) {
+//			System.out.println(i + tmp.get(i).getName());
+//		}
+
+		tmp.get(0).assignValue(20, false);
+		tmp.get(9).assignValue(20, false);
+		tmp.get(29).assignValue(20, false);
+		tmp.get(41).assignValue(20, false);
+		
+		skills.add(tmp.get(0));
+		skills.add(tmp.get(9));
+		skills.add(tmp.get(29));
+		skills.add(tmp.get(41));
+		
+	}
+	
+	public void displaySkills() {
+		for (Crunch c : skills) {
+			System.out.println(c.getName() + " (" + c.getValueFormatted() + "/" + c.getHalfValueFormatted() + "/" + c.getFifthValueFormatted() + ")");
+		}
+	}
+	
 	// Here be getters
 	
 	public int getLuck() {
@@ -133,4 +221,11 @@ public class Character {
 		return cSAN;
 	}
 	
+	public Occupation getOccupation() {
+		return cOccupation;
+	}
+	
+	public int getCreditRating() {
+		return cCreditRating;
+	}
 }

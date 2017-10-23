@@ -32,11 +32,16 @@ public class Application {
 //		System.out.println("Attribute (Fifth): " + attribute.getFifthValue());
 		
 		Character test = new Character();
+		System.out.println("-----------------------");
 		System.out.println("Luck (" + test.getLuck() + ")");
 		System.out.println("Build (" + test.getBuild() + ")");
 		System.out.println("Damage Bonus (" + test.getDamageBonus() + ")");
 		System.out.println("Hit Points (" + test.getHitPoints() + ")");
 		System.out.println("SAN (" + test.getSAN() + ")");
+		System.out.println("-----------------------");
+		System.out.println("Occupation (" + test.getOccupation().getTitle() + ")");
+		System.out.println("Occupational Skills :"); test.displaySkills();
+		System.out.println("Credit Rating (" + test.getCreditRating() + ")");
 		
 	}
 
