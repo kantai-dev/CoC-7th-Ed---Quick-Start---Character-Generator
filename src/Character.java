@@ -1,9 +1,12 @@
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Character {
 	
 	//will have an attributes list, luck, build, san, hp, occupation and skills list
+	
+	private Scanner input;
 	
 	//Attributes
 	private Crunch STR, CON, POW, DEX, APP, SIZ, INT, EDU;
@@ -18,6 +21,8 @@ public class Character {
 	
 	public Character() {
 		
+		input = new Scanner(System.in);
+		
 		attributes = new ArrayList<>();
 		populateAttributes();
 		assignAttributeScores();
@@ -30,7 +35,7 @@ public class Character {
 		cSAN = POW.getValue();
 		
 		skills = new ArrayList<>();
-		chooseOccupation(4);
+		chooseOccupation(input.nextInt());
 		assignSkillScores();
 		choosePersonalInterestSkills();
 		
@@ -70,14 +75,24 @@ public class Character {
 		//40, 50, 50, 50, 60, 60, 70, 80
 		
 		//test
-		STR.assignValue(40, true);
-		CON.assignValue(50, true);
-		POW.assignValue(50, true);
-		DEX.assignValue(50, true);
-		APP.assignValue(60, true);
-		SIZ.assignValue(60, true);
-		INT.assignValue(70, true);
-		EDU.assignValue(80, true);
+//		STR.assignValue(40, true);
+//		CON.assignValue(50, true);
+//		POW.assignValue(50, true);
+//		DEX.assignValue(50, true);
+//		APP.assignValue(60, true);
+//		SIZ.assignValue(60, true);
+//		INT.assignValue(70, true);
+//		EDU.assignValue(80, true);
+		
+		System.out.println("40, 50, 50, 50, 60, 60, 70, 80");
+		STR.assignValue(input.nextInt(), true);
+		CON.assignValue(input.nextInt(), true);
+		POW.assignValue(input.nextInt(), true);
+		DEX.assignValue(input.nextInt(), true);
+		APP.assignValue(input.nextInt(), true);
+		SIZ.assignValue(input.nextInt(), true);
+		INT.assignValue(input.nextInt(), true);
+		EDU.assignValue(input.nextInt(), true);
 		
 	}
 	
@@ -160,36 +175,68 @@ public class Character {
 		
 		//8 skills and credit rating
 		
-		skills.get(0).assignValue(40, true);
-		skills.get(1).assignValue(40, true);
-		skills.get(2).assignValue(40, true);
-		skills.get(3).assignValue(50, true);
-		skills.get(4).assignValue(50, true);
-		skills.get(5).assignValue(50, true);
-		skills.get(6).assignValue(60, true);
-		skills.get(7).assignValue(60, true);
+//		skills.get(0).assignValue(40, true);
+//		skills.get(1).assignValue(40, true);
+//		skills.get(2).assignValue(40, true);
+//		skills.get(3).assignValue(50, true);
+//		skills.get(4).assignValue(50, true);
+//		skills.get(5).assignValue(50, true);
+//		skills.get(6).assignValue(60, true);
+//		skills.get(7).assignValue(60, true);
+//		
+//		cCreditRating = 70;
 		
-		cCreditRating = 70;
+		System.out.println("40, 40, 40, 50, 50, 50, 60, 60, 70");
+		
+		skills.get(0).assignValue(input.nextInt(), true);
+		skills.get(1).assignValue(input.nextInt(), true);
+		skills.get(2).assignValue(input.nextInt(), true);
+		skills.get(3).assignValue(input.nextInt(), true);
+		skills.get(4).assignValue(input.nextInt(), true);
+		skills.get(5).assignValue(input.nextInt(), true);
+		skills.get(6).assignValue(input.nextInt(), true);
+		skills.get(7).assignValue(input.nextInt(), true);
+		
+		cCreditRating = input.nextInt();
 		
 	}
 	
 	private void choosePersonalInterestSkills() {
 		
-		ArrayList<Crunch> tmp = new Skills(skills).getAllSkills();
+		ArrayList<Crunch> tmp = Skills.getInstance().getAllSkills();
 		
-//		for (int i = 0; i < tmp.size(); i++) {
-//			System.out.println(i + tmp.get(i).getName());
-//		}
+		tmp.removeAll(skills); // Remove skills which have already been allocated
+		
+		System.out.println("Choose 4");
+		
+		for (int i = 0; i < tmp.size(); i++) {
+			System.out.println(i + " - " + tmp.get(i).getName());
+		}
 
-		tmp.get(0).assignValue(20, false);
-		tmp.get(9).assignValue(20, false);
-		tmp.get(29).assignValue(20, false);
-		tmp.get(41).assignValue(20, false);
+//		tmp.get(0).assignValue(20, false);
+//		tmp.get(9).assignValue(20, false);
+//		tmp.get(23).assignValue(20, false);
+//		tmp.get(33).assignValue(20, false);
+//		
+//		skills.add(tmp.get(0));
+//		skills.add(tmp.get(9));
+//		skills.add(tmp.get(23));
+//		skills.add(tmp.get(33));
+
+		Crunch choice1 = tmp.get(input.nextInt()),
+				choice2 = tmp.get(input.nextInt()),
+				choice3 = tmp.get(input.nextInt()),
+				choice4 = tmp.get(input.nextInt());
 		
-		skills.add(tmp.get(0));
-		skills.add(tmp.get(9));
-		skills.add(tmp.get(29));
-		skills.add(tmp.get(41));
+		choice1.assignValue(20, false);
+		choice2.assignValue(20, false);
+		choice3.assignValue(20, false);
+		choice4.assignValue(20, false);
+		
+		skills.add(choice1);
+		skills.add(choice2);
+		skills.add(choice3);
+		skills.add(choice4);
 		
 	}
 	

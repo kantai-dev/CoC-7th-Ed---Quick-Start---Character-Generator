@@ -1,15 +1,19 @@
+import java.util.ArrayList;
+
 public class PrivateInvestigator extends Occupation {
+	
+	private static ArrayList<Crunch> allSkills = Skills.getInstance().getAllSkills();
 
 	public PrivateInvestigator() {
 		super("Private Investigator",
-				new Crunch("Art/Craft (Photography)", 5),
-				new Crunch("Disguise", 5),
-				new Crunch("Law", 5),
-				new Crunch("Library Use", 20),
-				new Crunch("Fast Talk", 5),
-				new Crunch("Psychology", 10),
-				new Crunch("Spot Hidden", 25),
-				new Crunch("Locksmith", 1));
+				allSkills.get(4),
+				allSkills.get(7),
+				allSkills.get(21),
+				allSkills.get(22),
+				allSkills.get(11),
+				allSkills.get(33),
+				allSkills.get(38),
+				allSkills.get(24));
 	}
 	
 }

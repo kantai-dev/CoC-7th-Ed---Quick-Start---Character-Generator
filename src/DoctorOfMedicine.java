@@ -1,15 +1,19 @@
+import java.util.ArrayList;
+
 public class DoctorOfMedicine extends Occupation {
 
+	private static ArrayList<Crunch> allSkills = Skills.getInstance().getAllSkills();
+	
 	public DoctorOfMedicine() {
 		super("Doctor Of Medicine",
-				new Crunch("First Aid", 30),
-				new Crunch("Language (Latin)", 1),
-				new Crunch("Medicine", 1),
-				new Crunch("Psychology", 10),
-				new Crunch("Science (Biology)", 1),
-				new Crunch("Science (Pharmancy)", 1),
-				new Crunch("Listen", 20),
-				new Crunch("Psychoanalysis", 1));
+				allSkills.get(15),
+				allSkills.get(19),
+				allSkills.get(26),
+				allSkills.get(33),
+				allSkills.get(36),
+				allSkills.get(36),
+				allSkills.get(23),
+				allSkills.get(34));
 	}
 	
 }

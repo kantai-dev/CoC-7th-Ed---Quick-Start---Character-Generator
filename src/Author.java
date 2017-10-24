@@ -1,15 +1,19 @@
+import java.util.ArrayList;
+
 public class Author extends Occupation {
 
+	private static ArrayList<Crunch> allSkills = Skills.getInstance().getAllSkills();
+	
 	public Author() {
 		super("Author",
-				new Crunch("Art (Literature)", 5),
-				new Crunch("History", 5),
-				new Crunch("Library Use", 20),
-				new Crunch("Occult", 5),
-				new Crunch("Language (Other)", 1),
-				new Crunch("Language (Own)"), //This should be the characters EDU score
-				new Crunch("Psychology", 10),
-				new Crunch("Listen", 20));
+				allSkills.get(4),
+				allSkills.get(16),
+				allSkills.get(22),
+				allSkills.get(29),
+				allSkills.get(19),
+				allSkills.get(20),
+				allSkills.get(33),
+				allSkills.get(23));
 	}
 	
 }

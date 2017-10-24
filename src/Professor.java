@@ -1,15 +1,19 @@
+import java.util.ArrayList;
+
 public class Professor extends Occupation {
+	
+	private static ArrayList<Crunch> allSkills = Skills.getInstance().getAllSkills();
 
 	public Professor() {
 		super("Professor",
-				new Crunch("Library Use", 20),
-				new Crunch("Language (Other)", 01),
-				new Crunch("Language (Own)"),
-				new Crunch("Psychology", 10),
-				new Crunch("Fast Talk", 5),
-				new Crunch("Library Use", 20),
-				new Crunch("History", 5),
-				new Crunch("Occult", 5));
+				allSkills.get(22),
+				allSkills.get(19),
+				allSkills.get(20),
+				allSkills.get(33),
+				allSkills.get(11),
+				allSkills.get(28),
+				allSkills.get(16),
+				allSkills.get(32));
 	}
 	
 }

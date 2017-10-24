@@ -1,15 +1,19 @@
+import java.util.ArrayList;
+
 public class Antiquarian extends Occupation {
 
+	private static ArrayList<Crunch> allSkills = Skills.getInstance().getAllSkills();
+	
 	public Antiquarian() {
 		super("Antiquarian",
-				new Crunch("Appraise", 5),
-				new Crunch("Art/Craft", 5),
-				new Crunch("History", 5),
-				new Crunch("Language (Other)", 1),
-				new Crunch("Library Use", 20),
-				new Crunch("Fast Talk", 5), // this would be a choice
-				new Crunch("Spot Hidden", 25),
-				new Crunch("Persuade", 10));
+				allSkills.get(2),
+				allSkills.get(4),
+				allSkills.get(16),
+				allSkills.get(19),
+				allSkills.get(22),
+				allSkills.get(11), // this would be a choice
+				allSkills.get(38),
+				allSkills.get(31));
 	}
 	
 }
