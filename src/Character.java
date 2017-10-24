@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
+import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
+
 public class Character {
 	
 	//will have an attributes list, luck, build, san, hp, occupation and skills list
@@ -26,7 +28,6 @@ public class Character {
 		attributes = new ArrayList<>();
 		populateAttributes();
 		assignAttributeScores();
-		displayAttributes();
 		
 		d6 = new Random();
 		cLuck = rollForLuck();
@@ -35,9 +36,26 @@ public class Character {
 		cSAN = POW.getValue();
 		
 		skills = new ArrayList<>();
-		chooseOccupation(input.nextInt());
+		
+		System.out.println("Choose an Occupation:");
+		System.out.print("(0) Antiquarian (1) Author (2) Dilettante (3) Doctor of Medicine (4) Journalist (5) Police Detective (6) Private Investigator (7) Professor: "); chooseOccupation(input.nextInt());
 		assignSkillScores();
 		choosePersonalInterestSkills();
+		
+		System.out.println("\n");
+		System.out.println("CHARACTER SHEET OUTPUT");
+		System.out.println("Attributes: ");
+		displayAttributes();
+		System.out.println("-----------------------");
+		System.out.println("Luck (" + getLuck() + ")");
+		System.out.println("Build (" + getBuild() + ")");
+		System.out.println("Damage Bonus (" + getDamageBonus() + ")");
+		System.out.println("Hit Points (" + getHitPoints() + ")");
+		System.out.println("SAN (" + getSAN() + ")");
+		System.out.println("Credit Rating (" + getCreditRating() + ")");
+		System.out.println("-----------------------");
+		System.out.println("Occupation (" + getOccupation().getTitle() + ")");
+		System.out.println("Occupational Skills :"); displaySkills();
 		
 	}
 	
@@ -84,15 +102,16 @@ public class Character {
 //		INT.assignValue(70, true);
 //		EDU.assignValue(80, true);
 		
+		System.out.println("Please enter the following numbers one at a time to assign attributes:");
 		System.out.println("40, 50, 50, 50, 60, 60, 70, 80");
-		STR.assignValue(input.nextInt(), true);
-		CON.assignValue(input.nextInt(), true);
-		POW.assignValue(input.nextInt(), true);
-		DEX.assignValue(input.nextInt(), true);
-		APP.assignValue(input.nextInt(), true);
-		SIZ.assignValue(input.nextInt(), true);
-		INT.assignValue(input.nextInt(), true);
-		EDU.assignValue(input.nextInt(), true);
+		System.out.print("# for STR: "); STR.assignValue(input.nextInt(), true);
+		System.out.print("# for CON: "); CON.assignValue(input.nextInt(), true);
+		System.out.print("# for POW: "); POW.assignValue(input.nextInt(), true);
+		System.out.print("# for DEX: "); DEX.assignValue(input.nextInt(), true);
+		System.out.print("# for APP: "); APP.assignValue(input.nextInt(), true);
+		System.out.print("# for SIZ: "); SIZ.assignValue(input.nextInt(), true);
+		System.out.print("# for INT: "); INT.assignValue(input.nextInt(), true);
+		System.out.print("# for EDU: "); EDU.assignValue(input.nextInt(), true);
 		
 	}
 	
@@ -186,18 +205,19 @@ public class Character {
 //		
 //		cCreditRating = 70;
 		
+		System.out.println("Please enter the following numbers one at a time to assign occupational skill scores:");
 		System.out.println("40, 40, 40, 50, 50, 50, 60, 60, 70");
 		
-		skills.get(0).assignValue(input.nextInt(), true);
-		skills.get(1).assignValue(input.nextInt(), true);
-		skills.get(2).assignValue(input.nextInt(), true);
-		skills.get(3).assignValue(input.nextInt(), true);
-		skills.get(4).assignValue(input.nextInt(), true);
-		skills.get(5).assignValue(input.nextInt(), true);
-		skills.get(6).assignValue(input.nextInt(), true);
-		skills.get(7).assignValue(input.nextInt(), true);
+		System.out.print(skills.get(0).getName() + " score: "); skills.get(0).assignValue(input.nextInt(), true);
+		System.out.print(skills.get(1).getName() + " score: ");skills.get(1).assignValue(input.nextInt(), true);
+		System.out.print(skills.get(2).getName() + " score: ");skills.get(2).assignValue(input.nextInt(), true);
+		System.out.print(skills.get(3).getName() + " score: ");skills.get(3).assignValue(input.nextInt(), true);
+		System.out.print(skills.get(4).getName() + " score: ");skills.get(4).assignValue(input.nextInt(), true);
+		System.out.print(skills.get(5).getName() + " score: ");skills.get(5).assignValue(input.nextInt(), true);
+		System.out.print(skills.get(6).getName() + " score: ");skills.get(6).assignValue(input.nextInt(), true);
+		System.out.print(skills.get(7).getName() + " score: ");skills.get(7).assignValue(input.nextInt(), true);
 		
-		cCreditRating = input.nextInt();
+		System.out.print("Credit Rating score: "); cCreditRating = input.nextInt();
 		
 	}
 	
@@ -207,7 +227,7 @@ public class Character {
 		
 		tmp.removeAll(skills); // Remove skills which have already been allocated
 		
-		System.out.println("Choose 4");
+		System.out.println("Choose 4 Personal Interest Skills: ");
 		
 		for (int i = 0; i < tmp.size(); i++) {
 			System.out.println(i + " - " + tmp.get(i).getName());
@@ -223,10 +243,17 @@ public class Character {
 //		skills.add(tmp.get(23));
 //		skills.add(tmp.get(33));
 
-		Crunch choice1 = tmp.get(input.nextInt()),
-				choice2 = tmp.get(input.nextInt()),
-				choice3 = tmp.get(input.nextInt()),
-				choice4 = tmp.get(input.nextInt());
+//		Crunch choice1 = tmp.get(input.nextInt()),
+//				choice2 = tmp.get(input.nextInt()),
+//				choice3 = tmp.get(input.nextInt()),
+//				choice4 = tmp.get(input.nextInt());
+
+		Crunch choice1, choice2, choice3, choice4;
+		
+		System.out.print("Choice #1: "); choice1 = tmp.get(input.nextInt());
+		System.out.print("Choice #2: "); choice2 = tmp.get(input.nextInt());
+		System.out.print("Choice #3: "); choice3 = tmp.get(input.nextInt());
+		System.out.print("Choice #4: "); choice4 = tmp.get(input.nextInt());
 		
 		choice1.assignValue(20, false);
 		choice2.assignValue(20, false);
