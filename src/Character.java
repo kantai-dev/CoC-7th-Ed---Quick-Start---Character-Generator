@@ -4,11 +4,8 @@ import java.util.Scanner;
 
 public class Character {
 	
-	//will have an attributes list, luck, build, san, hp, occupation and skills list
-	
 	private Scanner input;
 	
-	//Attributes
 	private Crunch STR, CON, POW, DEX, APP, SIZ, INT, EDU;
 	private ArrayList<Crunch> attributes;
 	
@@ -90,26 +87,8 @@ public class Character {
 		
 		//40, 50, 50, 50, 60, 60, 70, 80
 		
-		//test
-//		STR.assignValue(40, true);
-//		CON.assignValue(50, true);
-//		POW.assignValue(50, true);
-//		DEX.assignValue(50, true);
-//		APP.assignValue(60, true);
-//		SIZ.assignValue(60, true);
-//		INT.assignValue(70, true);
-//		EDU.assignValue(80, true);
-		
 		System.out.println("Please enter the following numbers to assign attribute scores:");
 		System.out.println("40, 50, 50, 50, 60, 60, 70, 80");
-//		System.out.print("# for STR: "); STR.assignValue(input.nextInt(), true);
-//		System.out.print("# for CON: "); CON.assignValue(input.nextInt(), true);
-//		System.out.print("# for POW: "); POW.assignValue(input.nextInt(), true);
-//		System.out.print("# for DEX: "); DEX.assignValue(input.nextInt(), true);
-//		System.out.print("# for APP: "); APP.assignValue(input.nextInt(), true);
-//		System.out.print("# for SIZ: "); SIZ.assignValue(input.nextInt(), true);
-//		System.out.print("# for INT: "); INT.assignValue(input.nextInt(), true);
-//		System.out.print("# for EDU: "); EDU.assignValue(input.nextInt(), true);
 		
 		for (int i = 0; i <= 7; i++) {
 			
@@ -209,30 +188,8 @@ public class Character {
 		
 		//40, 40, 40, 50, 50, 50, 60, 60, 70
 		
-		//8 skills and credit rating
-		
-//		skills.get(0).assignValue(40, true);
-//		skills.get(1).assignValue(40, true);
-//		skills.get(2).assignValue(40, true);
-//		skills.get(3).assignValue(50, true);
-//		skills.get(4).assignValue(50, true);
-//		skills.get(5).assignValue(50, true);
-//		skills.get(6).assignValue(60, true);
-//		skills.get(7).assignValue(60, true);
-//		
-//		cCreditRating = 70;
-		
 		System.out.println("Please enter the following numbers one at a time to assign occupational skill scores:");
 		System.out.println("40, 40, 40, 50, 50, 50, 60, 60, 70");
-		
-//		System.out.print(skills.get(0).getName() + " score: "); skills.get(0).assignValue(input.nextInt(), true);
-//		System.out.print(skills.get(1).getName() + " score: "); skills.get(1).assignValue(input.nextInt(), true);
-//		System.out.print(skills.get(2).getName() + " score: "); skills.get(2).assignValue(input.nextInt(), true);
-//		System.out.print(skills.get(3).getName() + " score: "); skills.get(3).assignValue(input.nextInt(), true);
-//		System.out.print(skills.get(4).getName() + " score: "); skills.get(4).assignValue(input.nextInt(), true);
-//		System.out.print(skills.get(5).getName() + " score: "); skills.get(5).assignValue(input.nextInt(), true);
-//		System.out.print(skills.get(6).getName() + " score: "); skills.get(6).assignValue(input.nextInt(), true);
-//		System.out.print(skills.get(7).getName() + " score: "); skills.get(7).assignValue(input.nextInt(), true);
 		
 		for (int i = 0; i <= 7; i++) {
 			
@@ -263,38 +220,6 @@ public class Character {
 		for (int i = 0; i < tmp.size(); i++) {
 			System.out.println(i + " - " + tmp.get(i).getName());
 		}
-
-//		tmp.get(0).assignValue(20, false);
-//		tmp.get(9).assignValue(20, false);
-//		tmp.get(23).assignValue(20, false);
-//		tmp.get(33).assignValue(20, false);
-//		
-//		skills.add(tmp.get(0));
-//		skills.add(tmp.get(9));
-//		skills.add(tmp.get(23));
-//		skills.add(tmp.get(33));
-
-//		Crunch choice1 = tmp.get(input.nextInt()),
-//				choice2 = tmp.get(input.nextInt()),
-//				choice3 = tmp.get(input.nextInt()),
-//				choice4 = tmp.get(input.nextInt());
-
-//		Crunch choice1, choice2, choice3, choice4;
-//		
-//		System.out.print("Choice #1: "); choice1 = tmp.get(input.nextInt());
-//		System.out.print("Choice #2: "); choice2 = tmp.get(input.nextInt());
-//		System.out.print("Choice #3: "); choice3 = tmp.get(input.nextInt());
-//		System.out.print("Choice #4: "); choice4 = tmp.get(input.nextInt());
-//		
-//		choice1.assignValue(20, false);
-//		choice2.assignValue(20, false);
-//		choice3.assignValue(20, false);
-//		choice4.assignValue(20, false);
-//		
-//		skills.add(choice1);
-//		skills.add(choice2);
-//		skills.add(choice3);
-//		skills.add(choice4);
 		
 		for (int i = 1; i <= 4; i++) {
 			
