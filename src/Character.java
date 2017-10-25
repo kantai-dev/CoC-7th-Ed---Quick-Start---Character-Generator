@@ -248,22 +248,42 @@ public class Character {
 //				choice3 = tmp.get(input.nextInt()),
 //				choice4 = tmp.get(input.nextInt());
 
-		Crunch choice1, choice2, choice3, choice4;
+//		Crunch choice1, choice2, choice3, choice4;
+//		
+//		System.out.print("Choice #1: "); choice1 = tmp.get(input.nextInt());
+//		System.out.print("Choice #2: "); choice2 = tmp.get(input.nextInt());
+//		System.out.print("Choice #3: "); choice3 = tmp.get(input.nextInt());
+//		System.out.print("Choice #4: "); choice4 = tmp.get(input.nextInt());
+//		
+//		choice1.assignValue(20, false);
+//		choice2.assignValue(20, false);
+//		choice3.assignValue(20, false);
+//		choice4.assignValue(20, false);
+//		
+//		skills.add(choice1);
+//		skills.add(choice2);
+//		skills.add(choice3);
+//		skills.add(choice4);
 		
-		System.out.print("Choice #1: "); choice1 = tmp.get(input.nextInt());
-		System.out.print("Choice #2: "); choice2 = tmp.get(input.nextInt());
-		System.out.print("Choice #3: "); choice3 = tmp.get(input.nextInt());
-		System.out.print("Choice #4: "); choice4 = tmp.get(input.nextInt());
-		
-		choice1.assignValue(20, false);
-		choice2.assignValue(20, false);
-		choice3.assignValue(20, false);
-		choice4.assignValue(20, false);
-		
-		skills.add(choice1);
-		skills.add(choice2);
-		skills.add(choice3);
-		skills.add(choice4);
+		for (int i = 1; i <= 4; i++) {
+			
+			Crunch choice;
+			
+			System.out.print("Choice #" + i + ": "); choice = tmp.get(input.nextInt());
+			
+			if (choice.getName() == "Dodge") {
+				//Dodge has been selected
+				choice.assignValue((getDexterity() /2) + 20, false);
+			} else if (choice.getName() == "Language (Own)") {
+				//Language (Own) has been selected
+				choice.assignValue(getEducation() + 20, false);
+			} else {
+				choice.assignValue(20, false);
+			}
+			
+			skills.add(choice);
+			
+		}
 		
 	}
 	
@@ -274,6 +294,14 @@ public class Character {
 	}
 	
 	// Here be getters
+	
+	public int getDexterity() {
+		return attributes.get(4).getValue();
+	}
+	
+	public int getEducation() {
+		return attributes.get(8).getValue();
+	}
 	
 	public int getLuck() {
 		return cLuck;
