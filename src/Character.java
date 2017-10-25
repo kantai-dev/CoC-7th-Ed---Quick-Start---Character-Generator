@@ -2,8 +2,6 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
-
 public class Character {
 	
 	//will have an attributes list, luck, build, san, hp, occupation and skills list
