@@ -102,16 +102,30 @@ public class Character {
 //		INT.assignValue(70, true);
 //		EDU.assignValue(80, true);
 		
-		System.out.println("Please enter the following numbers one at a time to assign attributes:");
+		System.out.println("Please enter the following numbers to assign attribute scores:");
 		System.out.println("40, 50, 50, 50, 60, 60, 70, 80");
-		System.out.print("# for STR: "); STR.assignValue(input.nextInt(), true);
-		System.out.print("# for CON: "); CON.assignValue(input.nextInt(), true);
-		System.out.print("# for POW: "); POW.assignValue(input.nextInt(), true);
-		System.out.print("# for DEX: "); DEX.assignValue(input.nextInt(), true);
-		System.out.print("# for APP: "); APP.assignValue(input.nextInt(), true);
-		System.out.print("# for SIZ: "); SIZ.assignValue(input.nextInt(), true);
-		System.out.print("# for INT: "); INT.assignValue(input.nextInt(), true);
-		System.out.print("# for EDU: "); EDU.assignValue(input.nextInt(), true);
+//		System.out.print("# for STR: "); STR.assignValue(input.nextInt(), true);
+//		System.out.print("# for CON: "); CON.assignValue(input.nextInt(), true);
+//		System.out.print("# for POW: "); POW.assignValue(input.nextInt(), true);
+//		System.out.print("# for DEX: "); DEX.assignValue(input.nextInt(), true);
+//		System.out.print("# for APP: "); APP.assignValue(input.nextInt(), true);
+//		System.out.print("# for SIZ: "); SIZ.assignValue(input.nextInt(), true);
+//		System.out.print("# for INT: "); INT.assignValue(input.nextInt(), true);
+//		System.out.print("# for EDU: "); EDU.assignValue(input.nextInt(), true);
+		
+		for (int i = 0; i <= 7; i++) {
+			
+			System.out.print("# for " + attributes.get(i).getName() + ": "); 
+			
+			int tmp = input.nextInt();
+			
+			if (tmp == 0 || tmp % 10 != 0) {
+				i--; // Retry current iteration of loop
+			} else {
+				attributes.get(i).assignValue(tmp, true);
+			}
+			
+		}
 		
 	}
 	
@@ -154,6 +168,11 @@ public class Character {
 	}
 	
 	private void chooseOccupation(int choice) {
+		
+		if (choice > 7 || choice < 0) {
+			System.err.println("Please enter a number between 0-7.");
+			System.exit(1);
+		}
 		
 		switch (choice) {
 		case 0: //Antiquarian
@@ -208,14 +227,28 @@ public class Character {
 		System.out.println("Please enter the following numbers one at a time to assign occupational skill scores:");
 		System.out.println("40, 40, 40, 50, 50, 50, 60, 60, 70");
 		
-		System.out.print(skills.get(0).getName() + " score: "); skills.get(0).assignValue(input.nextInt(), true);
-		System.out.print(skills.get(1).getName() + " score: ");skills.get(1).assignValue(input.nextInt(), true);
-		System.out.print(skills.get(2).getName() + " score: ");skills.get(2).assignValue(input.nextInt(), true);
-		System.out.print(skills.get(3).getName() + " score: ");skills.get(3).assignValue(input.nextInt(), true);
-		System.out.print(skills.get(4).getName() + " score: ");skills.get(4).assignValue(input.nextInt(), true);
-		System.out.print(skills.get(5).getName() + " score: ");skills.get(5).assignValue(input.nextInt(), true);
-		System.out.print(skills.get(6).getName() + " score: ");skills.get(6).assignValue(input.nextInt(), true);
-		System.out.print(skills.get(7).getName() + " score: ");skills.get(7).assignValue(input.nextInt(), true);
+//		System.out.print(skills.get(0).getName() + " score: "); skills.get(0).assignValue(input.nextInt(), true);
+//		System.out.print(skills.get(1).getName() + " score: "); skills.get(1).assignValue(input.nextInt(), true);
+//		System.out.print(skills.get(2).getName() + " score: "); skills.get(2).assignValue(input.nextInt(), true);
+//		System.out.print(skills.get(3).getName() + " score: "); skills.get(3).assignValue(input.nextInt(), true);
+//		System.out.print(skills.get(4).getName() + " score: "); skills.get(4).assignValue(input.nextInt(), true);
+//		System.out.print(skills.get(5).getName() + " score: "); skills.get(5).assignValue(input.nextInt(), true);
+//		System.out.print(skills.get(6).getName() + " score: "); skills.get(6).assignValue(input.nextInt(), true);
+//		System.out.print(skills.get(7).getName() + " score: "); skills.get(7).assignValue(input.nextInt(), true);
+		
+		for (int i = 0; i <= 7; i++) {
+			
+			System.out.print(skills.get(i).getName() + " score: "); 
+			
+			int tmp = input.nextInt();
+			
+			if (tmp == 0 || tmp % 10 != 0) {
+				i--; // Retry current iteration of loop
+			} else {
+				skills.get(i).assignValue(tmp, true);
+			}
+			
+		}
 		
 		System.out.print("Credit Rating score: "); cCreditRating = input.nextInt();
 		
@@ -296,11 +329,11 @@ public class Character {
 	// Here be getters
 	
 	public int getDexterity() {
-		return attributes.get(4).getValue();
+		return attributes.get(3).getValue();
 	}
 	
 	public int getEducation() {
-		return attributes.get(8).getValue();
+		return attributes.get(7).getValue();
 	}
 	
 	public int getLuck() {
